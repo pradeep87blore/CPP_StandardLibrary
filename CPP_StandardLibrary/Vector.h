@@ -9,6 +9,8 @@ class Vector
 
     static void InitializationDemo();
     static void NonModifyingOperatorsDemo();
+    static void AssignmentFunctionsDemo();
+    static void ElementAccessDemo();
 
 public:
 

@@ -25,7 +25,7 @@ void DemoClass::SetValue(int iVal = 100)
     this->iValue = iVal;
 }
 
-int DemoClass::GetValue()
+int DemoClass::GetValue() const
 {
     return iValue;
 }
@@ -35,56 +35,75 @@ void DemoClass::PrintValue()
     PRINT(std::to_string(iValue));
 }
 
-// Overloading the == operator
-bool DemoClass::operator== (DemoClass &rhs)
+//// Equal to operator
+//bool DemoClass::operator== (const DemoClass &rhs)
+//{
+//    if (rhs.GetValue() == this->GetValue())
+//        return true;
+//    else
+//        return false;
+//}
+//
+//// Lesser than operator:
+//bool DemoClass::operator < (const DemoClass &rhs)
+//{
+//    if (this->GetValue() < rhs.GetValue())
+//        return true;
+//
+//    return false;
+//}
+
+// Equal to operator
+bool operator== (DemoClass &lhs, DemoClass &rhs)
 {
-    if (rhs.GetValue() == this->iValue)
+    if (rhs.GetValue() == lhs.GetValue())
         return true;
     else
         return false;
 }
 
-// No Equal to operator:
-bool DemoClass::operator != (DemoClass &rhs)
+// Not Equal to operator:
+bool operator != (DemoClass &lhs, DemoClass &rhs)
 {
-    if (rhs.GetValue() != this->iValue)
+    if (rhs.GetValue() != lhs.GetValue())
         return true;
 
     return false;
 }
 
 // Lesser than operator:
-bool DemoClass::operator < (DemoClass &rhs)
+bool operator < (DemoClass &lhs, DemoClass &rhs)
 {
-    if (this->iValue < rhs.GetValue())
+    if (lhs.GetValue() < rhs.GetValue())
         return true;
 
     return false;
 }
 
 // Greater than operator:
-bool DemoClass::operator > (DemoClass &rhs)
+bool operator > (DemoClass &lhs, DemoClass &rhs)
 {
-    if (this->iValue > rhs.GetValue())
+    if (lhs.GetValue() > rhs.GetValue())
         return true;
 
     return false;
 }
 
 // Lesser than or equal to operator:
-bool DemoClass::operator <= (DemoClass &rhs)
+bool operator <= (DemoClass &lhs, DemoClass &rhs)
 {
-    if (this->iValue <= rhs.GetValue())
+    if (lhs.GetValue() <= rhs.GetValue())
         return true;
 
     return false;
 }
 
 // Greater than or equal to operator:
-bool DemoClass::operator >= (DemoClass &rhs)
+bool operator >= (DemoClass &lhs, DemoClass &rhs)
 {
-    if (this->iValue >= rhs.GetValue())
+    if (lhs.GetValue() >= rhs.GetValue())
         return true;
 
     return false;
 }
+
