@@ -14,5 +14,24 @@ public:
 
     void PrintValue();
 
+    // Overloaded operators:
+    
+    // Equal to operator:
+    bool operator == (DemoClass &);
+
+    // No Equal to operator:
+    bool operator != (DemoClass &);
+
+    // Lesser than operator:
+    bool operator < (DemoClass &);
+
+    // Greater than operator:
+    bool operator > (DemoClass &);
+
+    // Lesser than or equal to operator:
+    bool operator <= (DemoClass &);
+
+    // Greater than or equal to operator:
+    bool operator >= (DemoClass &);
 };
 

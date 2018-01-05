@@ -34,3 +34,57 @@ void DemoClass::PrintValue()
 {
     PRINT(std::to_string(iValue));
 }
+
+// Overloading the == operator
+bool DemoClass::operator== (DemoClass &rhs)
+{
+    if (rhs.GetValue() == this->iValue)
+        return true;
+    else
+        return false;
+}
+
+// No Equal to operator:
+bool DemoClass::operator != (DemoClass &rhs)
+{
+    if (rhs.GetValue() != this->iValue)
+        return true;
+
+    return false;
+}
+
+// Lesser than operator:
+bool DemoClass::operator < (DemoClass &rhs)
+{
+    if (this->iValue < rhs.GetValue())
+        return true;
+
+    return false;
+}
+
+// Greater than operator:
+bool DemoClass::operator > (DemoClass &rhs)
+{
+    if (this->iValue > rhs.GetValue())
+        return true;
+
+    return false;
+}
+
+// Lesser than or equal to operator:
+bool DemoClass::operator <= (DemoClass &rhs)
+{
+    if (this->iValue <= rhs.GetValue())
+        return true;
+
+    return false;
+}
+
+// Greater than or equal to operator:
+bool DemoClass::operator >= (DemoClass &rhs)
+{
+    if (this->iValue >= rhs.GetValue())
+        return true;
+
+    return false;
+}

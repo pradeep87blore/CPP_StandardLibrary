@@ -101,6 +101,34 @@ void Vector::NonModifyingOperatorsDemo()
     vec2.shrink_to_fit();
     PRINT("Capacity of vec2 after shrink_to_fit is :" + std::to_string(vec2.capacity()));
 
+    PRINT("Checking the comparison operators:");
+
+    // == check between vectors, calls the == on all the individual elements
+    vector<DemoClass> vec3(3, DemoClass(5)); // vec3 is a vector with 3 objects of DemoClass, each with value 5
+    
+    PRINT_CONTAINER(vec2, "vec2");
+    PRINT_CONTAINER(vec3, "vec3");
+
+    if (vec3 == vec2)
+        PRINT("vec3 == vec2 is TRUE");
+    else
+        PRINT("vec3 == vec2 is FALSE");
+
+    vector<DemoClass> vec4(vec3); // Make vec4 a copy of vec3.
+
+    PRINT_CONTAINER(vec4, "vec4");
+
+    if (vec3 == vec4)
+        PRINT("vec3 == vec4 is TRUE");
+    else
+        PRINT("vec3 == vec4 is FALSE");
+
+    // != check on vectors calls the != on all the elements of the vectors
+    if (vec3 != vec2)
+        PRINT("vec3 != vec2 is TRUE");
+    else
+        PRINT("vec3 != vec2 is FALSE");
+
 }
 
 void Vector::Demonstrate()

@@ -14,9 +14,17 @@ public:
     static void PrintMessage(std::string str);
 
     template <typename T>
-    static void PrintContainer(T &container)
+    static void PrintContainer(T &container, string sContainerName = "")
     {
-        PRINT("Container contains: ");
+        if (sContainerName == "")
+        {
+            PRINT("Container contains: ");
+        }
+        else
+        {
+            PRINT(sContainerName + " Container contains: ");
+        }
+
         for (auto &i = begin(container); i != end(container); i++)
         {
             i->PrintValue();
