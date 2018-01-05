@@ -226,6 +226,13 @@ void Vector::ElementAccessDemo()
     }
 }
 
+
+void Vector::InsertionDeletionDemo()
+{
+
+
+}
+
 void Vector::Demonstrate()
 {
     // This demonstrates the various options available on the vector container.
@@ -234,16 +241,19 @@ void Vector::Demonstrate()
     PRINT("Demonstrating Vectors: \n");
 
     // Demonstrate the various ways vectors can be initialized:
-    //InitializationDemo();
+    InitializationDemo();
 
     // Demonstrate some non-modifying operations
-    //NonModifyingOperatorsDemo();
+    NonModifyingOperatorsDemo();
 
     // Assinment functions demo
-    //AssignmentFunctionsDemo();
+    AssignmentFunctionsDemo();
 
     // Demonstrate how individual elements can be accessed
     ElementAccessDemo();
+
+    // Demonstrate insertions and deletions
+    //InsertionDeletionDemo();
 
     PRINT("End of Vectors Demo");
 

@@ -11,6 +11,7 @@ class Vector
     static void NonModifyingOperatorsDemo();
     static void AssignmentFunctionsDemo();
     static void ElementAccessDemo();
+    static void InsertionDeletionDemo();
 
 public:
 
