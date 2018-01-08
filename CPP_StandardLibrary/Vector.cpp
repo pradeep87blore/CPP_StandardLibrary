@@ -229,7 +229,105 @@ void Vector::ElementAccessDemo()
 
 void Vector::InsertionDeletionDemo()
 {
+    vector<DemoClass> vec1;
+    PRINT("Size of vec1 at the beginning is :" + std::to_string(vec1.size()));
+    
+    DemoClass d1(1), d2(2), d3(3);
 
+    vec1.push_back(d1);
+    vec1.push_back(d2);
+    vec1.push_back(d3);
+    PRINT("Size of vec1 after 3 push_back operations is :" + std::to_string(vec1.size()));
+    PRINT_CONTAINER(vec1);
+
+    // Ensure to check if the vector is not empty, before running pop_back.
+    // Running pop_back on an empty vector is undefined behavior and might cause a crash
+    // Note that VS is doing an assert in debug mode but does nothing for release modes
+    if(!vec1.empty())
+        vec1.pop_back();
+    if (!vec1.empty())
+        vec1.pop_back();
+
+    PRINT("Size of vec1 after 2 pop_back operations is :" + std::to_string(vec1.size()));
+    PRINT_CONTAINER(vec1);
+
+    // Use insert to insert elements at the beginning
+    vec1.insert(begin(vec1), d2);
+    vec1.insert(begin(vec1), d3);
+    PRINT("After call to insert(begin(vec1),...) twice");
+    PRINT_CONTAINER(vec1);
+
+    vec1.insert(begin(vec1), 5, d3);
+    PRINT("After call to insert(begin(vec1),5, d3)");
+    PRINT_CONTAINER(vec1);
+
+    std::list<DemoClass> demoList;
+    demoList.push_back(DemoClass(111));
+    demoList.push_back(DemoClass(121));
+    demoList.push_back(DemoClass(112));
+    demoList.push_back(DemoClass(222));
+
+    PRINT("This list shall be inserted into the vector: ");
+    PRINT_CONTAINER(demoList);
+
+    vec1.insert(begin(vec1) + 2, begin(demoList), end(demoList));
+    PRINT("After call to insert from the list (starting at begin(vec1) + 2 position:");
+    PRINT_CONTAINER(vec1);
+
+    vec1.insert(begin(vec1) , { DemoClass(-11), DemoClass(-22), DemoClass(-33) });
+    PRINT("After call to insert(begin(vec1) , {initializer list})");
+    PRINT_CONTAINER(vec1);
+
+    PRINT("Emplacing 333 and -333 into the vector, at the beginning:");
+    vec1.emplace(begin(vec1), 333);
+    vec1.emplace(begin(vec1), -333);
+
+    PRINT_CONTAINER(vec1);
+
+    PRINT("Emplacing 12345 and -12345 into the vector, at the back:");
+    vec1.emplace_back(12345);
+    vec1.emplace_back(-12345);
+
+    PRINT_CONTAINER(vec1);
+
+    PRINT("Erasing the first element:");
+    vec1.erase(begin(vec1));
+    PRINT("Size of vec1 is :" + std::to_string(vec1.size()));
+    PRINT_CONTAINER(vec1);
+    
+    PRINT("Erasing the 2nd, 3rd, 4th and 5th elements:");
+    vec1.erase(begin(vec1) + 2, begin(vec1) + 6); // This is a half open range, hence 2-5 are removed
+    PRINT("Size of vec1 is :" + std::to_string(vec1.size()));
+    PRINT_CONTAINER(vec1);
+
+    PRINT("Using resize to increase the size of the vector:");
+    vec1.resize(vec1.size() + 5);
+    PRINT("Size of vec1 is :" + std::to_string(vec1.size()));
+    PRINT_CONTAINER(vec1);
+
+    PRINT("Using resize to decrease the size of the vector. The last 5 elements shall get removed as per this operation:");
+    vec1.resize(vec1.size() - 5);
+    PRINT("Size of vec1 is :" + std::to_string(vec1.size()));
+    PRINT_CONTAINER(vec1);
+
+    PRINT("Using resize to increase the size of the vector and add DemoClass(123) as the new members:");
+    vec1.resize(vec1.size() + 5, DemoClass(123));
+    PRINT("Size of vec1 is :" + std::to_string(vec1.size()));
+    PRINT_CONTAINER(vec1);
+
+    PRINT("Clearing the contents of the vector, thereby removing all the elements:");
+    vec1.clear();
+    PRINT("Size of vec1 is :" + std::to_string(vec1.size()));
+    PRINT_CONTAINER(vec1);
+
+    // Vectors dont provide an option to directly remove elements at a specific position.
+    // We can make use of the STL algorithms, along with erase, to achieve the same.
+    vec1.assign({ DemoClass(10), DemoClass(20), DemoClass(30) });
+    PRINT("Demonstrating removing a specific element:\nSize of vec1 is :" + std::to_string(vec1.size()));
+    PRINT_CONTAINER(vec1);
+    vec1.erase(std::remove(begin(vec1), end(vec1), DemoClass(10)));
+    PRINT("After removing all elements with value 10, size of vec1 is :" + std::to_string(vec1.size()));
+    PRINT_CONTAINER(vec1);
 
 }
 
@@ -253,7 +351,7 @@ void Vector::Demonstrate()
     ElementAccessDemo();
 
     // Demonstrate insertions and deletions
-    //InsertionDeletionDemo();
+    InsertionDeletionDemo();
 
     PRINT("End of Vectors Demo");
 

@@ -23,7 +23,7 @@ public:
     // Overloaded operators:
 
     // Equal to operator:
-    //bool operator == (const DemoClass &);
+    bool operator == (const DemoClass &);
 
     // No Equal to operator:
     //bool operator != (DemoClass &);

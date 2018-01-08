@@ -36,13 +36,13 @@ void DemoClass::PrintValue()
 }
 
 //// Equal to operator
-//bool DemoClass::operator== (const DemoClass &rhs)
-//{
-//    if (rhs.GetValue() == this->GetValue())
-//        return true;
-//    else
-//        return false;
-//}
+bool DemoClass::operator== (const DemoClass &rhs)
+{
+    if (rhs.GetValue() == this->GetValue())
+        return true;
+    else
+        return false;
+}
 //
 //// Lesser than operator:
 //bool DemoClass::operator < (const DemoClass &rhs)
