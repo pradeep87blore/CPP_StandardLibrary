@@ -65,7 +65,48 @@ void Deque::InitializationDemo()
 
 void Deque::NonModifyingOperatorsDemo()
 {
+    PRINT("Demonstrating non-modifying deque operations: \n");
+    DemoClassDeque dq1;
+    if (dq1.empty())
+    {
+        PRINT("Created a new deque. It is empty now\nSize of dq1 is " + std::to_string(dq1.size()));
+        PRINT_CONTAINER(dq1);
+    }
 
+    PRINT("Size operation : " + std::to_string(dq1.size()));
+
+    PRINT("Size operation : " + std::to_string(dq1.max_size()));
+
+    dq1.push_back(DemoClass(10));
+    dq1.push_back(DemoClass(20));
+    dq1.push_back(DemoClass(30));
+
+    PRINT("Size of dq1 after inserting 3 elements: " + std::to_string(dq1.size()));
+    PRINT("Max size of dq1 after inserting 3 elements: " + std::to_string(dq1.max_size()));
+
+    dq1.shrink_to_fit();
+
+    PRINT("After a shrink_to_fit, size of dq1 after inserting 3 elements: " + std::to_string(dq1.size()));
+    PRINT("After a shrink_to_fit, max size of dq1 after inserting 3 elements: " + std::to_string(dq1.max_size()));
+
+    // Even though comparing d1 and d2 works, comparing dq1 and dq2 is failing with the following error:
+    // 1>c:\program files (x86)\microsoft visual studio 14.0\vc\include\xutility(2919): 
+    // error C2672: 'operator __surrogate_func': no matching overloaded function found
+    // TODO: Fix and enable this
+
+    /*DemoClassDeque dq2(dq1);
+
+    DemoClass d1(10), d2(10), d3(20);
+
+    if (d1 == d2)
+        PRINT("Both are equal");
+    
+    if (d1 != d3)
+        PRINT("Both are unequal");
+    if (dq1 == dq2)
+    {
+        PRINT("dq1 and dq2 are equal");
+    }*/
 
 }
 
@@ -77,7 +118,33 @@ void Deque::AssignmentFunctionsDemo()
 
 void Deque::ElementAccessDemo()
 {
+    PRINT("Demonstrating element access operations : ");
+    DemoClassDeque dq1 = { DemoClass(1), DemoClass(2), DemoClass(3) };
 
+    PRINT("Size of dq1 after inserting 3 elements: " + std::to_string(dq1.size()));
+    PRINT_CONTAINER(dq1);
+
+    PRINT("Element at index 0 (dq1[0]): ");
+    dq1[0].PrintValue();
+
+    PRINT("Element at index 1 (dq1.at(1)): ");
+    dq1.at(1).PrintValue();
+
+    PRINT("Front of dq1: ");
+    dq1.front().PrintValue();
+
+    PRINT("Back of dq1: ");
+    dq1.back().PrintValue();
+
+    try
+    {
+        PRINT("Trying to access an index outside the current deque : ");
+        dq1.at(10).PrintValue();
+    }
+    catch (std::exception ex)
+    {
+        PRINT("Exception caught : " + std::string(ex.what()));
+    }
 
 }
 

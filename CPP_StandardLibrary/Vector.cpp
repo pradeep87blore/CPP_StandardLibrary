@@ -164,9 +164,7 @@ void Vector::AssignmentFunctionsDemo()
     PRINT("Size of vec3 is :" + std::to_string(vec3.size()));
     PRINT_CONTAINER(vec3);
 
-    //TODO: swap is complaining about an ambigous != operator. Check and fix
-
-    /*PRINT("vec2 is now: ");
+    PRINT("vec2 is now: ");
     PRINT_CONTAINER(vec2);
 
     PRINT("vec3 is now: ");
@@ -174,23 +172,23 @@ void Vector::AssignmentFunctionsDemo()
 
     PRINT("Swapping now : ");
     
-    vec2.swap(vec3);*/
+    vec2.swap(vec3);
 
-    //PRINT("vec2 is now: ");
-    //PRINT_CONTAINER(vec2);
+    PRINT("vec2 is now: ");
+    PRINT_CONTAINER(vec2);
 
-    //PRINT("vec3 is now: ");
-    //PRINT_CONTAINER(vec3);
+    PRINT("vec3 is now: ");
+    PRINT_CONTAINER(vec3);
 
-    //PRINT("Swapping with swap algo function: ");
+    PRINT("Swapping with swap algo function: ");
 
-    //std::swap(vec2, vec3);
+    std::swap(vec2, vec3);
 
-    //PRINT("vec2 is now: ");
-    //PRINT_CONTAINER(vec2);
+    PRINT("vec2 is now: ");
+    PRINT_CONTAINER(vec2);
 
-    //PRINT("vec3 is now: ");
-    //PRINT_CONTAINER(vec3);
+    PRINT("vec3 is now: ");
+    PRINT_CONTAINER(vec3);
 }
 
 void Vector::ElementAccessDemo()

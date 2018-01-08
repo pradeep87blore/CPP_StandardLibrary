@@ -43,6 +43,17 @@ bool DemoClass::operator== (const DemoClass &rhs)
     else
         return false;
 }
+
+// Compares two classes and returns true if they match
+bool DemoClass::Equal(DemoClass &rhs)
+{
+    if (this->GetValue() == rhs.GetValue())
+        return true;
+    else
+        return false;
+
+}
+
 //
 //// Lesser than operator:
 //bool DemoClass::operator < (const DemoClass &rhs)
@@ -107,3 +118,12 @@ bool operator >= (DemoClass &lhs, DemoClass &rhs)
     return false;
 }
 
+
+// Compares two classes and returns true if they match
+bool Equal(DemoClass &lhs, DemoClass &rhs)
+{
+    if (lhs.GetValue() == rhs.GetValue())
+        return true;
+    else 
+        return false;
+}
