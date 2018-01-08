@@ -11,59 +11,60 @@
 
 using std::vector;
 
+typedef vector<DemoClass> DemoClassVec;
 
 void Vector::InitializationDemo()
 {
     // The following are the ways the vectors can be initialized
 
     // Create an empty vector
-    vector<DemoClass> vec1;
+    DemoClassVec vec1;
     vec1.push_back(DemoClass(555)); // Create a single value
     PRINT("Size of vec1 is :" + std::to_string(vec1.size()));
     PRINT_CONTAINER(vec1);
 
     // Create vec2 as a copy of vec1
-    vector<DemoClass> vec2(vec1);
+    DemoClassVec vec2(vec1);
     PRINT("Size of vec2 is :" + std::to_string(vec2.size()));
     PRINT_CONTAINER(vec2);
 
     // Copy assignment
-    vector<DemoClass> vec3 = vec2;
+    DemoClassVec vec3 = vec2;
     PRINT("Size of vec3 is :" + std::to_string(vec3.size()));
     PRINT_CONTAINER(vec3);
 
     // Move constructor, vec3 values are undefined after this
-    vector<DemoClass> vec4(std::move(vec3));
+    DemoClassVec vec4(std::move(vec3));
     PRINT("Size of vec4 is :" + std::to_string(vec4.size()));
     PRINT_CONTAINER(vec4);
 
     // Move assignment, vec4 values are undefined after this
-    vector<DemoClass> vec5 = std::move(vec4);
+    DemoClassVec vec5 = std::move(vec4);
     PRINT("Size of vec5 is :" + std::to_string(vec5.size()));
     PRINT_CONTAINER(vec5);
 
     // Create a vector with 5 elements of DemoClass initialized by the default constructor
-    vector<DemoClass> vec6(5);
+    DemoClassVec vec6(5);
     PRINT("Size of vec6 is :" + std::to_string(vec6.size()));
 
     // Create a vector vec7 with 3 copies of the demo class object
     DemoClass demo(10101);
-    vector<DemoClass> vec7(3, demo);
+    DemoClassVec vec7(3, demo);
     PRINT("Size of vec7 is :" + std::to_string(vec6.size()));
     PRINT_CONTAINER(vec7);
 
     // Create a vector vec8 by copying the first two elements from vec7
-    vector<DemoClass> vec8(begin(vec7), begin(vec7) + 2);
+    DemoClassVec vec8(begin(vec7), begin(vec7) + 2);
     PRINT("Size of vec8 is :" + std::to_string(vec8.size()));
     PRINT_CONTAINER(vec8);
 
     // Create a vactor vec9 using the initializer list
-    vector<DemoClass> vec9({ DemoClass(1), DemoClass(2), DemoClass(3) });
+    DemoClassVec vec9({ DemoClass(1), DemoClass(2), DemoClass(3) });
     PRINT("Size of vec9 is :" + std::to_string(vec9.size()));
     PRINT_CONTAINER(vec9);
 
     // Create a vactor vec1- using the initializer list
-    vector<DemoClass> vec10 = { DemoClass(5), DemoClass(6), DemoClass(7), DemoClass(8) };
+    DemoClassVec vec10 = { DemoClass(5), DemoClass(6), DemoClass(7), DemoClass(8) };
     PRINT("Size of vec10 is :" + std::to_string(vec10.size()));
     PRINT_CONTAINER(vec10);
 }
@@ -74,7 +75,7 @@ void Vector::NonModifyingOperatorsDemo()
 
     PRINT("Non modifying operators demo: ");
     // Checking for emptiness
-    vector<DemoClass> vec1;
+    DemoClassVec vec1;
     if (vec1.empty() == true)
         PRINT("vec1 is empty");
 
@@ -85,7 +86,7 @@ void Vector::NonModifyingOperatorsDemo()
         PRINT("vec1 is NOT empty");
 
     // Checking the current vector size
-    vector<DemoClass> vec2(10);
+    DemoClassVec vec2(10);
     PRINT("Size of vec2 is :" + std::to_string(vec2.size()));    
 
     // Max size:
@@ -107,7 +108,7 @@ void Vector::NonModifyingOperatorsDemo()
     PRINT("Checking the comparison operators:");
 
     // Relational operations
-    vector<DemoClass> vec3(3, DemoClass(5)); // vec3 is a vector with 3 objects of DemoClass, each with value 5
+    DemoClassVec vec3(3, DemoClass(5)); // vec3 is a vector with 3 objects of DemoClass, each with value 5
     
     PRINT_CONTAINER(vec2);
     PRINT_CONTAINER(vec3);    
@@ -118,7 +119,7 @@ void Vector::NonModifyingOperatorsDemo()
         PRINT("equal(vec3, vec2) == 0 is FALSE");
 
     
-    vector<DemoClass> vec4(vec3);
+    DemoClassVec vec4(vec3);
     if (std::equal(begin(vec4), end(vec4), begin(vec3)) == 0)
         PRINT("equal(vec3, vec4) == 0 is TRUE");
     else
@@ -134,7 +135,7 @@ void Vector::AssignmentFunctionsDemo()
 {
     PRINT("Demonstrating the assign functions in vector");
 
-    vector<DemoClass> vec1;
+    DemoClassVec vec1;
     vec1.assign(3, DemoClass(123)); // Puts 3 copies of DemoClass with value 123, into vec1
     PRINT("Size of vec1 is :" + std::to_string(vec1.size()));
     PRINT_CONTAINER(vec1);
@@ -152,20 +153,18 @@ void Vector::AssignmentFunctionsDemo()
     PRINT_CONTAINER(demoList);
 
     PRINT("Copying into vec2 from the list :");
-    vector<DemoClass> vec2;
+    DemoClassVec vec2;
     vec2.assign(begin(demoList), end(demoList));
     PRINT("Size of vec2 is :" + std::to_string(vec2.size()));
     PRINT_CONTAINER(vec2);
         
     PRINT("Using assign with the initializer list");
-    vector<DemoClass> vec3;
+    DemoClassVec vec3;
     vec3.assign({DemoClass(1), DemoClass(2), DemoClass(3)});
     PRINT("Size of vec3 is :" + std::to_string(vec3.size()));
     PRINT_CONTAINER(vec3);
 
-    //TODO: swap is complaining about an ambigous != operator. Check and fix
-
-    /*PRINT("vec2 is now: ");
+    PRINT("vec2 is now: ");
     PRINT_CONTAINER(vec2);
 
     PRINT("vec3 is now: ");
@@ -173,30 +172,30 @@ void Vector::AssignmentFunctionsDemo()
 
     PRINT("Swapping now : ");
     
-    vec2.swap(vec3);*/
+    vec2.swap(vec3);
 
-    //PRINT("vec2 is now: ");
-    //PRINT_CONTAINER(vec2);
+    PRINT("vec2 is now: ");
+    PRINT_CONTAINER(vec2);
 
-    //PRINT("vec3 is now: ");
-    //PRINT_CONTAINER(vec3);
+    PRINT("vec3 is now: ");
+    PRINT_CONTAINER(vec3);
 
-    //PRINT("Swapping with swap algo function: ");
+    PRINT("Swapping with swap algo function: ");
 
-    //std::swap(vec2, vec3);
+    std::swap(vec2, vec3);
 
-    //PRINT("vec2 is now: ");
-    //PRINT_CONTAINER(vec2);
+    PRINT("vec2 is now: ");
+    PRINT_CONTAINER(vec2);
 
-    //PRINT("vec3 is now: ");
-    //PRINT_CONTAINER(vec3);
+    PRINT("vec3 is now: ");
+    PRINT_CONTAINER(vec3);
 }
 
 void Vector::ElementAccessDemo()
 {
     PRINT("Demonstrating element access in vector: \n");
 
-    vector<DemoClass> vec1 = { DemoClass(1), DemoClass(2), DemoClass(3) };
+    DemoClassVec vec1 = { DemoClass(1), DemoClass(2), DemoClass(3) };
 
     PRINT_CONTAINER(vec1);
 
@@ -226,6 +225,111 @@ void Vector::ElementAccessDemo()
     }
 }
 
+
+void Vector::InsertionDeletionDemo()
+{
+    DemoClassVec vec1;
+    PRINT("Size of vec1 at the beginning is :" + std::to_string(vec1.size()));
+    
+    DemoClass d1(1), d2(2), d3(3);
+
+    vec1.push_back(d1);
+    vec1.push_back(d2);
+    vec1.push_back(d3);
+    PRINT("Size of vec1 after 3 push_back operations is :" + std::to_string(vec1.size()));
+    PRINT_CONTAINER(vec1);
+
+    // Ensure to check if the vector is not empty, before running pop_back.
+    // Running pop_back on an empty vector is undefined behavior and might cause a crash
+    // Note that VS is doing an assert in debug mode but does nothing for release modes
+    if(!vec1.empty())
+        vec1.pop_back();
+    if (!vec1.empty())
+        vec1.pop_back();
+
+    PRINT("Size of vec1 after 2 pop_back operations is :" + std::to_string(vec1.size()));
+    PRINT_CONTAINER(vec1);
+
+    // Use insert to insert elements at the beginning
+    vec1.insert(begin(vec1), d2);
+    vec1.insert(begin(vec1), d3);
+    PRINT("After call to insert(begin(vec1),...) twice");
+    PRINT_CONTAINER(vec1);
+
+    vec1.insert(begin(vec1), 5, d3);
+    PRINT("After call to insert(begin(vec1),5, d3)");
+    PRINT_CONTAINER(vec1);
+
+    std::list<DemoClass> demoList;
+    demoList.push_back(DemoClass(111));
+    demoList.push_back(DemoClass(121));
+    demoList.push_back(DemoClass(112));
+    demoList.push_back(DemoClass(222));
+
+    PRINT("This list shall be inserted into the vector: ");
+    PRINT_CONTAINER(demoList);
+
+    vec1.insert(begin(vec1) + 2, begin(demoList), end(demoList));
+    PRINT("After call to insert from the list (starting at begin(vec1) + 2 position:");
+    PRINT_CONTAINER(vec1);
+
+    vec1.insert(begin(vec1) , { DemoClass(-11), DemoClass(-22), DemoClass(-33) });
+    PRINT("After call to insert(begin(vec1) , {initializer list})");
+    PRINT_CONTAINER(vec1);
+
+    PRINT("Emplacing 333 and -333 into the vector, at the beginning:");
+    vec1.emplace(begin(vec1), 333);
+    vec1.emplace(begin(vec1), -333);
+
+    PRINT_CONTAINER(vec1);
+
+    PRINT("Emplacing 12345 and -12345 into the vector, at the back:");
+    vec1.emplace_back(12345);
+    vec1.emplace_back(-12345);
+
+    PRINT_CONTAINER(vec1);
+
+    PRINT("Erasing the first element:");
+    vec1.erase(begin(vec1));
+    PRINT("Size of vec1 is :" + std::to_string(vec1.size()));
+    PRINT_CONTAINER(vec1);
+    
+    PRINT("Erasing the 2nd, 3rd, 4th and 5th elements:");
+    vec1.erase(begin(vec1) + 2, begin(vec1) + 6); // This is a half open range, hence 2-5 are removed
+    PRINT("Size of vec1 is :" + std::to_string(vec1.size()));
+    PRINT_CONTAINER(vec1);
+
+    PRINT("Using resize to increase the size of the vector:");
+    vec1.resize(vec1.size() + 5);
+    PRINT("Size of vec1 is :" + std::to_string(vec1.size()));
+    PRINT_CONTAINER(vec1);
+
+    PRINT("Using resize to decrease the size of the vector. The last 5 elements shall get removed as per this operation:");
+    vec1.resize(vec1.size() - 5);
+    PRINT("Size of vec1 is :" + std::to_string(vec1.size()));
+    PRINT_CONTAINER(vec1);
+
+    PRINT("Using resize to increase the size of the vector and add DemoClass(123) as the new members:");
+    vec1.resize(vec1.size() + 5, DemoClass(123));
+    PRINT("Size of vec1 is :" + std::to_string(vec1.size()));
+    PRINT_CONTAINER(vec1);
+
+    PRINT("Clearing the contents of the vector, thereby removing all the elements:");
+    vec1.clear();
+    PRINT("Size of vec1 is :" + std::to_string(vec1.size()));
+    PRINT_CONTAINER(vec1);
+
+    // Vectors dont provide an option to directly remove elements at a specific position.
+    // We can make use of the STL algorithms, along with erase, to achieve the same.
+    vec1.assign({ DemoClass(10), DemoClass(20), DemoClass(30) });
+    PRINT("Demonstrating removing a specific element:\nSize of vec1 is :" + std::to_string(vec1.size()));
+    PRINT_CONTAINER(vec1);
+    vec1.erase(std::remove(begin(vec1), end(vec1), DemoClass(10)));
+    PRINT("After removing all elements with value 10, size of vec1 is :" + std::to_string(vec1.size()));
+    PRINT_CONTAINER(vec1);
+
+}
+
 void Vector::Demonstrate()
 {
     // This demonstrates the various options available on the vector container.
@@ -234,16 +338,19 @@ void Vector::Demonstrate()
     PRINT("Demonstrating Vectors: \n");
 
     // Demonstrate the various ways vectors can be initialized:
-    //InitializationDemo();
+    InitializationDemo();
 
     // Demonstrate some non-modifying operations
-    //NonModifyingOperatorsDemo();
+    NonModifyingOperatorsDemo();
 
     // Assinment functions demo
-    //AssignmentFunctionsDemo();
+    AssignmentFunctionsDemo();
 
     // Demonstrate how individual elements can be accessed
     ElementAccessDemo();
+
+    // Demonstrate insertions and deletions
+    InsertionDeletionDemo();
 
     PRINT("End of Vectors Demo");
 

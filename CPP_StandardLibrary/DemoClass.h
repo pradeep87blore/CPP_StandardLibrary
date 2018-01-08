@@ -1,10 +1,10 @@
 #pragma once
 
-#include <utility>
-using std::rel_ops::operator!=;
-using std::rel_ops::operator>;
-using std::rel_ops::operator<=;
-using std::rel_ops::operator>=;
+//#include <utility>
+//using std::rel_ops::operator!=;
+//using std::rel_ops::operator>;
+//using std::rel_ops::operator<=;
+//using std::rel_ops::operator>=;
 
 // This class is just used to print out messages when the constructors and destructors are invoked
 class DemoClass
@@ -23,7 +23,7 @@ public:
     // Overloaded operators:
 
     // Equal to operator:
-    //bool operator == (const DemoClass &);
+    bool operator == (const DemoClass &);
 
     // No Equal to operator:
     //bool operator != (DemoClass &);
@@ -39,6 +39,8 @@ public:
 
     // Greater than or equal to operator:
     //bool operator >= (DemoClass &);
+
+    bool Equal(DemoClass &rhs);
 
 };
 // Equal to operator:
@@ -58,3 +60,6 @@ bool operator <= (DemoClass &lhs, DemoClass &rhs);
 
 // Greater than or equal to operator:
 bool operator >= (DemoClass &lhs, DemoClass &rhs);
+
+// Compares two classes and returns true if they match
+bool Equal(DemoClass &lhs, DemoClass &rhs);
