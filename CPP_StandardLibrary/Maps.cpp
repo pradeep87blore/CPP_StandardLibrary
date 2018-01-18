@@ -1,5 +1,6 @@
 #include "Maps.h"
 #include "Utilities.h"
+#include "RevComparer.h"
 #include <map>
 #include <string>
 #include <vector>
@@ -17,15 +18,6 @@ using namespace std;
     }                           \
   };
 
-template <typename T>
-class RevComparer
-{
-public:
-    bool operator()(const T param1, const T param2) const
-    {
-        return (param1 > param2);
-    }
-};
 
 void Maps::InitializationDemo()
 {

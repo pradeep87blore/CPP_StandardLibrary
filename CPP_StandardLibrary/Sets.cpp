@@ -1,5 +1,6 @@
 #include "Sets.h"
 #include "Utilities.h"
+#include "RevComparer.h"
 #include <set>
 #include <string>
 #include <iostream>
@@ -17,6 +18,10 @@ void Sets::SetInitializationDemo()
 {
     set<string> set1{ "A", "B", "C" };
     PRINT_SET(set1);
+
+    set<string, RevComparer<string>> set2{ "A", "B", "C" };
+    PRINT_SET(set2);
+
 }
 
 void Sets::SetOperationsDemo()

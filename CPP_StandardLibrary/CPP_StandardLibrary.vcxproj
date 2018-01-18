@@ -124,6 +124,7 @@
     <ClInclude Include="Deque.h" />
     <ClInclude Include="List.h" />
     <ClInclude Include="Maps.h" />
+    <ClInclude Include="RevComparer.h" />
     <ClInclude Include="Sets.h" />
     <ClInclude Include="Utilities.h" />
     <ClInclude Include="Vector.h" />
