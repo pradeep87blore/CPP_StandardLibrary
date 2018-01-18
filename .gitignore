@@ -1,5 +1,13 @@
-/.vs
+.vs/
 /Debug
+*.aps
+*.ncb
+*.opendb
+*.opensdf
+*.sdf
+*.cachefile
+*.VC.db
+*.VC.VC.opendb
 *.obj
 *.log
 *.pdb
