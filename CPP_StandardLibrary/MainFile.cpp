@@ -5,6 +5,7 @@
 #include "List.h"
 #include "Deque.h"
 #include "Maps.h"
+#include "Sets.h"
 
 
 enum class EContainers
@@ -75,7 +76,7 @@ int main()
         break;
         case static_cast<int>(EContainers::SET):
         {
-
+            Sets::Demonstrate();
         }
         break;
         default:
