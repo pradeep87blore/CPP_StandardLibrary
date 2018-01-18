@@ -4,30 +4,33 @@
 #include "Vector.h"
 #include "List.h"
 #include "Deque.h"
+#include "Maps.h"
 
 
-
-
-const int MAX_OPTIONS = 3; // Increase this to match the number of containers for who demo is available
-
-enum EContainers
+enum class EContainers
 {
     VECTOR = 1, 
     DEQUE = 2, 
     LIST = 3, 
+    MAP = 4,
+    SET = 5,
     INVALID // Should be the last value. Add other containers before this
 };
+
+const int MAX_OPTIONS = static_cast<int>(EContainers::INVALID); // Increase this to match the number of containers for who demo is available
 
 int main()
 {
     PRINT("Welcome");
-
+    
     while (1)
     {
         PRINT(R"(Choose on of the following options:
              1 - vector
              2 - deque
              3 - list
+             4 - map
+             5 - set
              Q - Quit)");
 
         char cOption = 0;
@@ -49,20 +52,30 @@ int main()
 
         switch (iOption)
         {
-        case VECTOR:
+        case static_cast<int>(EContainers::VECTOR):
         {
             
             Vector::Demonstrate();
         }
         break;
-        case LIST:
+        case static_cast<int>(EContainers::LIST):
         {
             List::Demonstrate();
         }
         break;
-        case DEQUE:
+        case static_cast<int>(EContainers::DEQUE):
         {
             Deque::Demonstrate();
+        }
+        break;
+        case static_cast<int>(EContainers::MAP):
+        {
+            Maps::Demonstrate();
+        }
+        break;
+        case static_cast<int>(EContainers::SET):
+        {
+
         }
         break;
         default:

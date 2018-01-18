@@ -114,6 +114,8 @@
     <ClCompile Include="Deque.cpp" />
     <ClCompile Include="List.cpp" />
     <ClCompile Include="MainFile.cpp" />
+    <ClCompile Include="Maps.cpp" />
+    <ClCompile Include="Sets.cpp" />
     <ClCompile Include="Utilities.cpp" />
     <ClCompile Include="Vector.cpp" />
   </ItemGroup>
@@ -121,6 +123,8 @@
     <ClInclude Include="DemoClass.h" />
     <ClInclude Include="Deque.h" />
     <ClInclude Include="List.h" />
+    <ClInclude Include="Maps.h" />
+    <ClInclude Include="Sets.h" />
     <ClInclude Include="Utilities.h" />
     <ClInclude Include="Vector.h" />
   </ItemGroup>

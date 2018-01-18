@@ -1,0 +1,10 @@
+/.vs
+/Debug
+*.obj
+*.log
+*.pdb
+*.exe
+*.db
+*.opendb
+*.suo
+/CPP_StandardLibrary/Debug
