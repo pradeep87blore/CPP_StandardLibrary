@@ -44,6 +44,7 @@ void DemoClass::PrintValue()
 //// Equal to operator
 bool DemoClass::operator== (const DemoClass &rhs)
 {
+    //PRINT("Member DemoClass::operator==");
     if (rhs.GetValue() == this->GetValue())
         return true;
     else
@@ -71,19 +72,10 @@ ostream& operator<<(ostream& os, const DemoClass& dc)
     return os;
 }
 
-//
-//// Lesser than operator:
-//bool DemoClass::operator < (const DemoClass &rhs)
-//{
-//    if (this->GetValue() < rhs.GetValue())
-//        return true;
-//
-//    return false;
-//}
-
 // Equal to operator
 bool operator== (const DemoClass &lhs, const DemoClass &rhs)
 {
+    //PRINT("Non Member DemoClass::operator==");
     if (rhs.GetValue() == lhs.GetValue())
         return true;
     else

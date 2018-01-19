@@ -1,6 +1,6 @@
 #pragma once
 
-#include <ostream>
+#include <iostream>
 
 // This class is just used to print out messages when the constructors and destructors are invoked
 class DemoClass
@@ -64,7 +64,38 @@ bool operator >= (DemoClass &lhs, DemoClass &rhs);
 // Compares two classes and returns true if they match
 bool Equal(DemoClass &lhs, DemoClass &rhs);
 
-//ostream& operator<<(ostream& os, const DemoClass& dc);
+
+//Hash functor for DemoClass
+class DemoClassHasher
+{
+public:
+    size_t operator()(const DemoClass& dc) const
+    {
+        //std::cout << "DemoClassHasher hash function called for " << dc.GetValue() << std::endl;
+        return std::hash<int>()(dc.GetValue());
+    }
+};
+
+// A bad Hash functor for DemoClass
+// This ensures that there are many collisions
+class DemoClassBadHasher
+{
+public:
+    size_t operator()(const DemoClass& dc) const
+    {
+        return (dc.GetValue() % 3);
+    }
+};
+
+class DemoClassCustomEquals
+{
+public:
+    bool operator()(const DemoClass& dc1, const DemoClass &dc2) const
+    {
+        std::cout << "DemoClassCustomEquals : " << dc1.GetValue() << ", " << dc2.GetValue() << std::endl;
+        return ((dc1.GetValue() % 3) == (dc2.GetValue() % 3));
+    }
+};
 
 
 // Extending the std namespace to include the hash function for DemoClass
@@ -73,17 +104,10 @@ namespace std {
     template <>
     struct hash<DemoClass>
     {
-        std::size_t operator()(const DemoClass& k) const
+        std::size_t operator()(const DemoClass& dc) const
         {
-            using std::size_t;
-            using std::hash;
-            using std::string;
-
-            // Compute individual hash values for first,
-            // second and third and combine them using XOR
-            // and bit shifting:
-
-            return (hash<int>()(k.GetValue()));
+            //std::cout << "DemoClassHasher template specialization called for " << dc.GetValue() << std::endl;
+            return (hash<int>()(dc.GetValue()));
         }
     };
 
