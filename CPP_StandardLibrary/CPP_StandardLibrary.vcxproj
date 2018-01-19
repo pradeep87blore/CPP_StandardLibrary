@@ -116,6 +116,8 @@
     <ClCompile Include="MainFile.cpp" />
     <ClCompile Include="Maps.cpp" />
     <ClCompile Include="Sets.cpp" />
+    <ClCompile Include="UnorderedMaps.cpp" />
+    <ClCompile Include="UnorderedSets.cpp" />
     <ClCompile Include="Utilities.cpp" />
     <ClCompile Include="Vector.cpp" />
   </ItemGroup>
@@ -126,6 +128,8 @@
     <ClInclude Include="Maps.h" />
     <ClInclude Include="RevComparer.h" />
     <ClInclude Include="Sets.h" />
+    <ClInclude Include="UnorderedMaps.h" />
+    <ClInclude Include="UnorderedSets.h" />
     <ClInclude Include="Utilities.h" />
     <ClInclude Include="Vector.h" />
   </ItemGroup>

@@ -1,8 +1,14 @@
 #include "DemoClass.h"
 #include "Utilities.h"
+#include <functional>
 
 
 #define NO_DEBUG_HERE // Enable this flag to prevent debug prints
+
+
+
+using namespace std;
+
 
 
 DemoClass::~DemoClass()
@@ -54,6 +60,17 @@ bool DemoClass::Equal(DemoClass &rhs)
 
 }
 
+auto DemoClass::GetHash()
+{
+    return std::hash<int>()(GetValue());
+}
+
+ostream& operator<<(ostream& os, const DemoClass& dc)
+{
+    os << dc.GetValue();
+    return os;
+}
+
 //
 //// Lesser than operator:
 //bool DemoClass::operator < (const DemoClass &rhs)
@@ -65,7 +82,7 @@ bool DemoClass::Equal(DemoClass &rhs)
 //}
 
 // Equal to operator
-bool operator== (DemoClass &lhs, DemoClass &rhs)
+bool operator== (const DemoClass &lhs, const DemoClass &rhs)
 {
     if (rhs.GetValue() == lhs.GetValue())
         return true;
@@ -127,3 +144,5 @@ bool Equal(DemoClass &lhs, DemoClass &rhs)
     else
         return false;
 }
+
+

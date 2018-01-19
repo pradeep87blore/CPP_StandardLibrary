@@ -115,6 +115,25 @@ void Maps::MapOperationsDemo()
     PRINT("After erasing from 1005 to the end of the map, map1 is now: ");
     PRINT_MAP(map1);
 
+    if (map1.empty())
+        PRINT("Map is empty");
+    else
+        PRINT("Map is not empty now");
+
+    PRINT("Current map size: ");
+    PRINT(to_string(map1.size()));
+
+    map1.clear();
+    PRINT("Map is cleared");
+
+    if (map1.empty())
+        PRINT("Map is empty");
+    else
+        PRINT("Map is not empty now");
+
+    PRINT("Current map size: ");
+    PRINT(to_string(map1.size()));
+
 }
 
 void Maps::MultiMapsInitializationDemo()
@@ -191,6 +210,13 @@ void Maps::MultiMapsOperationsDemo()
     PRINT_MAP(map1);
 
     PRINT("Count of all elements with key 3 : " + to_string(map1.count(3)));
+
+    PRINT("Current map size: ");
+    PRINT(to_string(map1.size()));
+
+    map1.clear();
+    PRINT("Aftering clearing the map, size is: ");
+    PRINT(to_string(map1.size()));
 
 }
 

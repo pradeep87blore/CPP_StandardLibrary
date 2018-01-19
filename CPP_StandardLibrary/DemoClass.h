@@ -1,10 +1,6 @@
 #pragma once
 
-//#include <utility>
-//using std::rel_ops::operator!=;
-//using std::rel_ops::operator>;
-//using std::rel_ops::operator<=;
-//using std::rel_ops::operator>=;
+#include <ostream>
 
 // This class is just used to print out messages when the constructors and destructors are invoked
 class DemoClass
@@ -42,9 +38,13 @@ public:
 
     bool Equal(DemoClass &rhs);
 
+    auto GetHash();
+
+    friend std::ostream& operator<<(std::ostream& os, const DemoClass& dc);
+
 };
 // Equal to operator:
-bool operator== (DemoClass &lhs, DemoClass &rhs);
+bool operator== (const DemoClass &lhs, const DemoClass &rhs);
 
 // Not Equal to operator:
 bool operator != (DemoClass &lhs, DemoClass &rhs);
@@ -64,3 +64,27 @@ bool operator >= (DemoClass &lhs, DemoClass &rhs);
 // Compares two classes and returns true if they match
 bool Equal(DemoClass &lhs, DemoClass &rhs);
 
+//ostream& operator<<(ostream& os, const DemoClass& dc);
+
+
+// Extending the std namespace to include the hash function for DemoClass
+namespace std {
+
+    template <>
+    struct hash<DemoClass>
+    {
+        std::size_t operator()(const DemoClass& k) const
+        {
+            using std::size_t;
+            using std::hash;
+            using std::string;
+
+            // Compute individual hash values for first,
+            // second and third and combine them using XOR
+            // and bit shifting:
+
+            return (hash<int>()(k.GetValue()));
+        }
+    };
+
+}
