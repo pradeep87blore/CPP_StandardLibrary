@@ -6,6 +6,8 @@
 #include "Deque.h"
 #include "Maps.h"
 #include "Sets.h"
+#include "UnorderedMaps.h"
+#include "UnorderedSets.h"
 
 
 enum class EContainers
@@ -15,6 +17,8 @@ enum class EContainers
     LIST = 3, 
     MAP = 4,
     SET = 5,
+    UMAP = 6,
+    USET = 7,
     INVALID // Should be the last value. Add other containers before this
 };
 
@@ -32,6 +36,8 @@ int main()
              3 - list
              4 - map
              5 - set
+             6 - unordered_map
+             7 - unordered_set
              Q - Quit)");
 
         char cOption = 0;
@@ -77,6 +83,16 @@ int main()
         case static_cast<int>(EContainers::SET):
         {
             Sets::Demonstrate();
+        }
+        break;
+        case static_cast<int>(EContainers::UMAP) :
+        {
+            UnorderedMaps::Demonstrate();
+        }
+        break;
+        case static_cast<int>(EContainers::USET) :
+        {
+            UnorderedSets::Demonstrate();
         }
         break;
         default:

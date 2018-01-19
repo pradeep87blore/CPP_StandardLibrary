@@ -39,6 +39,12 @@
     <ClCompile Include="Maps.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="UnorderedSets.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="UnorderedMaps.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Utilities.h">
@@ -63,6 +69,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="RevComparer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="UnorderedSets.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="UnorderedMaps.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
